@@ -1,5 +1,12 @@
 node {
     def app
+    environment {
+        
+        project = 'python' 
+        imageVersion = 'v' 
+        imageTag = "wissem007/${project}:${imageVersion}.${env.BUILD_NUMBER}" 
+        
+    }
 
     stage('Clone repository') {
       
@@ -30,8 +37,5 @@ node {
         }
         }
     
-    stage('Trigger ManifestUpdate') {
-                echo "triggering updatemanifestjob"
-                build job: 'updatemanifest', parameters: [string(name: 'DOCKERTAG', value: env.BUILD_NUMBER)]
-        }
+   
 }
