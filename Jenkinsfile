@@ -15,8 +15,9 @@ node {
     }
 
     stage('Build image') {
+        
   
-       app = docker.build("wissem007/python")
+       app = docker.build(${imageTag})
     }
 
     stage('Test image') {
