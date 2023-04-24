@@ -1,7 +1,12 @@
 node {
     def app
     environment {
-        
+        DOCKERHUB_USERNAME = "wissem007"
+        APP_NAME = "argocd"
+        IMAGE_TAG = "${BUILD_NUMBER}"
+        IMAGE_NAME = "${DOCKERHUB_USERNAME}" + "/" + "${APP_NAME}"
+        REGISTRY_CREDS = 'dockerhub'
+        IMAGE_TAG = "${BUILD_NUMBER}"
         project = 'python' 
         imageVersion = 'v' 
         imageTag = "wissem007/${project}:${imageVersion}.${env.BUILD_NUMBER}" 
@@ -15,9 +20,9 @@ node {
     }
 
     stage('Build image') {
-        
+         //app = docker.build("wissem007/python")
+         docker_image = docker.build "${IMAGE_NAME}"
   
-       app = docker.build("${imageTag}")
     }
 
     stage('Test image') {
