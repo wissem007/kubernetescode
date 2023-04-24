@@ -1,19 +1,12 @@
-# spécifie l'image de base
-FROM python:3.9-slim-buster
+# syntax=docker/dockerfile:1
 
-# définit le répertoire de travail
-WORKDIR /app
+FROM python:3.8-slim-buster
 
-# copie les fichiers de l'application dans le conteneur
-COPY requirements.txt .
-COPY app.py .
+WORKDIR /python-docker
 
-# installe les dépendances
-RUN pip install --no-cache-dir -r requirements.txt
+COPY requirements.txt requirements.txt
+RUN pip3 install -r requirements.txt
 
-# expose le port utilisé par l'application
-EXPOSE 5000
+COPY . .
 
-# définit la commande pour démarrer l'application
-CMD [ "python", "app.py" ]
-
+CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
