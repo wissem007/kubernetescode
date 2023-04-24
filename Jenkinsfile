@@ -19,10 +19,9 @@ node {
         checkout scm
     }
 
-    stage('Build image') {
-         //app = docker.build("wissem007/python")
-         docker_image = docker.build "${IMAGE_NAME}"
+   stage('Build image') {
   
+       app = docker.build("raj80dockerid/test")
     }
 
     stage('Test image') {
