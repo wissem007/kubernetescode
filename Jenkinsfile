@@ -17,7 +17,7 @@ node {
     stage('Build image') {
         
   
-       app = docker.build(${imageTag})
+       app = docker.build("${imageTag}")
     }
 
     stage('Test image') {
