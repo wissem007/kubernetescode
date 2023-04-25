@@ -1,13 +1,19 @@
-# syntax=docker/dockerfile:1
+# Spécifie l'image de base
+FROM python:3.9-slim-buster
 
-FROM python:3.8-slim-buster
+# Définit le répertoire de travail
+WORKDIR /app
 
-WORKDIR /python-docker
+# Copie les fichiers de l'application dans le conteneur
+COPY requirements.txt .
+COPY app.py .
+COPY Jenkins.png .
 
-COPY requirements.txt requirements.txt Jenkins.png
+# Installe les dépendances
+RUN pip install --no-cache-dir -r requirements.txt
 
-RUN pip3 install -r requirements.txt
+# Expose le port utilisé par l'application
+EXPOSE 5000
 
-COPY . .
-
-CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
+# Définit la commande pour démarrer l'application
+CMD [ "python", "app.py" ]
