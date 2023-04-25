@@ -5,7 +5,7 @@ app = Flask(__name__)
 def hello_geek():
    return '''
         <h1>Hello from Flask & Docker premier test de deploiment version 19</h2>
-        <img src="/static/image.jpg" alt="My image">
+        <img src="Jenkins.png" alt="Jenkins">
     '''
 if __name__ == "__main__":
     app.run(debug=True)
