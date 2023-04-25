@@ -7,7 +7,7 @@ WORKDIR /app
 # Copie les fichiers de l'application dans le conteneur
 COPY requirements.txt .
 COPY app.py .
-COPY Jenkins.png .
+#COPY Jenkins.png .
 
 # Installe les dépendances
 RUN pip install --no-cache-dir -r requirements.txt
