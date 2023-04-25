@@ -4,7 +4,7 @@ FROM python:3.8-slim-buster
 
 WORKDIR /python-docker
 
-COPY requirements.txt requirements.txt
+COPY requirements.txt requirements.txt Jenkins.png
 
 RUN pip3 install -r requirements.txt
 
